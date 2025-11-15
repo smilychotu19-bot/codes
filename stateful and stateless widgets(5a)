@@ -1,0 +1,53 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MainApp());
+}
+
+class MainApp extends StatelessWidget {  // Stateless Widget
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(title: Text("Stateless & Stateful Example")),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text("This is a Stateless Widget"),
+              SizedBox(height: 20),
+              StatefulCounter(),  // Calling Stateful Widget below
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class StatefulCounter extends StatefulWidget {  // Stateful Widget
+  @override
+  _StatefulCounterState createState() => _StatefulCounterState();
+}
+
+class _StatefulCounterState extends State<StatefulCounter> {
+  int count = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Text("Count: $count"),
+        ElevatedButton(
+          onPressed: () {
+            setState(() {
+              count++;
+            });
+          },
+          child: Text("Increase"),
+        )
+      ],
+    );
+  }
+}
+
