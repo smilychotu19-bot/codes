@@ -1,0 +1,31 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MaterialApp(
+    home: ResponsiveUI(),
+  ));
+}
+
+class ResponsiveUI extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+
+    return Scaffold(
+      appBar: AppBar(title: Text("Responsive UI")),
+      body: Center(
+        child: Container(
+          width: width * 0.5,
+          height: 150,
+          color: Colors.blue,
+          child: Center(
+            child: Text(
+              "Width adjusts to screen",
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
