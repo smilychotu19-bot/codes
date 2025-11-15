@@ -1,0 +1,69 @@
+Flutter pub get
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+void main() {
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => CounterProvider(),
+      child: MyApp(),
+    ),
+  );
+}
+
+class CounterProvider extends ChangeNotifier {
+  int value = 0;
+  void increase() {
+    value++;
+    notifyListeners();
+  }
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: HomeScreen(),
+    );
+  }
+}
+
+class HomeScreen extends StatefulWidget { // Using setState here
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  int localCount = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    final provider = Provider.of<CounterProvider>(context);
+
+    return Scaffold(
+      appBar: AppBar(title: Text("setState & Provider Example")),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text("Using setState: $localCount"),
+            ElevatedButton(
+              onPressed: () {
+                setState(() {
+                  localCount++;
+                });
+              },
+              child: Text("Increase (setState)"),
+            ),
+            SizedBox(height: 30),
+            Text("Using Provider: ${provider.value}"),
+            ElevatedButton(
+              onPressed: provider.increase,
+              child: Text("Increase (Provider)"),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
