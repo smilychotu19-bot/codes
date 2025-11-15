@@ -1,0 +1,49 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(title: Text("Custom Widget Example")),
+        body: Center(
+          child: MyCustomCard(
+            title: "Hello Flutter!",
+            icon: Icons.star,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class MyCustomCard extends StatelessWidget { // Custom widget
+  final String title;
+  final IconData icon;
+
+  const MyCustomCard({required this.title, required this.icon});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: Colors.blue.shade100,
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(icon, color: Colors.blue, size: 30),
+          SizedBox(width: 10),
+          Text(title, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+        ],
+      ),
+    );
+  }
+}
+
