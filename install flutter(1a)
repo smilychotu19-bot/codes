@@ -1,0 +1,22 @@
+Flutter already comes bundled with the Dart SDK — so when you install Flutter, you don’t need to install Dart separately.
+Step 1: Download Flutter
+Go to the official Flutter website:
+https://flutter.dev/docs/get-started/install
+Choose your Operating System (Windows / macOS / Linux).
+Step 2: Extract Flutter SDK
+•	Extract the downloaded .zip file.
+•	Place it in a suitable location like:
+•	C:\src\flutter
+Step 3: Add Flutter to System Path
+1.	Press Windows + R → type sysdm.cpl → OK
+2.	Open Environment Variables
+3.	Under System Variables, select Path → Edit
+4.	Add the path:
+5.	C:\src\flutter\bin
+Step 4: Check Installation
+Open Command Prompt and run:
+flutter --version
+If Flutter version shows, you're good.
+Step 5: Run Flutter Doctor
+flutter doctor
+This checks if everything is set up correctly.
